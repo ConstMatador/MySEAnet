@@ -1,0 +1,1 @@
+nohup python MySEAnetrun.py -C conf/example.json &
