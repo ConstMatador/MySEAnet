@@ -113,6 +113,8 @@ class Experiment:
             
             
     def train(self) -> None:
+        logging.info(f'epoch: {self.epoch}, start training')
+        
         recons_weight = self.conf.getEntry('reconstruct_weight')
         
         for one_batch, another_batch in zip(self.train_loader, self.train_query_loader):
