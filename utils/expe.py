@@ -44,6 +44,7 @@ class Experiment:
         self.val_query_loader = DataLoader(TSData(val_samples), batch_size=batch_size, shuffle=True)
         
         self.model = SEAnet(self.conf)
+        
         if os.path.exists(self.conf.getEntry("model_path")):
             logging.info("Model loading...")
             self.model.load_state_dict(torch.load(self.model_path))

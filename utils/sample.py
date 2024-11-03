@@ -17,7 +17,6 @@ class TSData(Dataset):
 
 def getSamples(conf:Configuration):
     dim_series = conf.getEntry('dim_series')
-    device = conf.getEntry('device')
     train_samples, val_samples = sample(conf)
     train_samples = train_samples.view([-1, 1, dim_series])
     val_samples = val_samples.view([-1, 1, dim_series])

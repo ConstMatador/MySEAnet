@@ -4,7 +4,7 @@ from torch.nn.modules.distance import PairwiseDistance
 
 class ScaledTransLoss(nn.Module):
     
-    def __init__(self, original_dimension:int = 256, embedding_dimension: int = 16, to_scale: bool = False):
+    def __init__(self, original_dimension:int, embedding_dimension: int, to_scale: bool = False):
         super(ScaledTransLoss, self).__init__()
 
         self.l2 = PairwiseDistance(p=2).cuda()
@@ -25,7 +25,7 @@ class ScaledTransLoss(nn.Module):
 
 class ScaledReconsLoss(nn.Module):
     
-    def __init__(self, original_dimension: int = 256, to_scale: bool = False):
+    def __init__(self, original_dimension: int, to_scale: bool = False):
         super(ScaledReconsLoss, self).__init__()
         self.l2 = PairwiseDistance(p=2).cuda()
         if to_scale:
