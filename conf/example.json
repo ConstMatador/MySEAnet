@@ -2,7 +2,7 @@
     "data_path": "../Data/Mine/sald/sald-10Gb-01_znorm.bin",
     "log_path": "/mnt/data/user_liangzhiyu/wangzhongzheng/MySEAnet/example/example.log",
     "model_path": "/mnt/data/user_liangzhiyu/wangzhongzheng/MySEAnet/example/example.pth",
-    "dim_series": 960,
+    "dim_series": 256,
     "dim_embedding": 16,
     "batch_size": 256,
     "epoch_max": 100,

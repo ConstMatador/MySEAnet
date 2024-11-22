@@ -23,6 +23,14 @@ def getSamples(conf:Configuration):
     return train_samples, val_samples
 
 
+def normalize_sequence(sequence):
+    mean = np.mean(sequence)
+    std = np.std(sequence)
+    if std == 0:
+        return np.zeros_like(sequence)
+    return (sequence - mean) / std
+
+
 def sample(conf:Configuration):
     data_path = conf.getEntry('data_path')
     train_path = conf.getEntry('train_path')
@@ -45,6 +53,7 @@ def sample(conf:Configuration):
     for index in train_samples_indices:
         sequence = np.fromfile(data_path, dtype=np.float32, count=dim_series, offset=4 * dim_series * index)
         if not np.isnan(np.sum(sequence)):
+            sequence = normalize_sequence(sequence)
             loaded.append(sequence)
             
     train_samples = np.asarray(loaded, dtype=np.float32)
@@ -55,6 +64,7 @@ def sample(conf:Configuration):
     for index in val_samples_indices:
         sequence = np.fromfile(data_path, dtype=np.float32, count=dim_series, offset=4 * dim_series * index)
         if not np.isnan(np.sum(sequence)):
+            sequence = normalize_sequence(sequence)
             loaded.append(sequence)
     
     val_samples = np.asarray(loaded, dtype=np.float32)

@@ -5,6 +5,19 @@ from utils.activation import LeCunTanh
 from utils.commons import Squeeze, Reshape
 
 
+class SEAnet(nn.Module):
+    
+    def __init__(self, conf:Configuration):
+        super(SEAnet, self).__init__()
+        
+        self.encoder = SEAnetEncoder(conf)
+        self.decoder = SEAnetDecoder(conf)
+        
+    def forward(self, input: Tensor) -> Tensor:
+        embedding = self.encoder(input)
+        return self.decoder(embedding)
+    
+
 class SEAnetEncoder(nn.Module):
     
     def __init__(self, conf:Configuration):
@@ -55,14 +68,3 @@ class SEAnetDecoder(nn.Module):
         return self.model(input)
         
 
-class SEAnet(nn.Module):
-    
-    def __init__(self, conf:Configuration):
-        super(SEAnet, self).__init__()
-        
-        self.encoder = SEAnetEncoder(conf)
-        self.decoder = SEAnetDecoder(conf)
-        
-    def forward(self, input: Tensor) -> Tensor:
-        embedding = self.encoder(input)
-        return self.decoder(embedding)
