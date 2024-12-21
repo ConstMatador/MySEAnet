@@ -9,7 +9,7 @@
     "train_size": 200000,
     "val_size": 10000,
     "data_size": 1000000,
-    "device": "cuda:0",
+    "device": "cuda:6",
     "train_path": "/mnt/data/user_liangzhiyu/wangzhongzheng/MySEAnet/example/data/train.data",
     "val_path": "/mnt/data/user_liangzhiyu/wangzhongzheng/MySEAnet/example/data/val.data",
     "train_indices_path": "/mnt/data/user_liangzhiyu/wangzhongzheng/MySEAnet/example/data/train_indices.data",
