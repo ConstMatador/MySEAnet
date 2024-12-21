@@ -97,6 +97,7 @@ class Experiment:
         self.setup()
         
         self.epoch = 0
+        self.validate()
         while self.epoch < self.epoch_max:
             self.adjust_lr()
             self.adjust_wd()
